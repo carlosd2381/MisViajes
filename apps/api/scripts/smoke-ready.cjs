@@ -3,15 +3,51 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const appRoot = path.resolve(__dirname, '..');
-const entrypoint = path.join(appRoot, 'dist', 'main.js');
 const port = process.env.API_PORT || '4100';
 const baseUrl = `http://127.0.0.1:${port}`;
 const runAuthChecks = process.env.SMOKE_WITH_AUTH === '1';
 const smokeAuthEmail = process.env.SMOKE_AUTH_EMAIL || 'admin@misviajes.mx';
 const smokeAuthPassword = process.env.SMOKE_AUTH_PASSWORD || 'Admin1234!';
 
-if (!fs.existsSync(entrypoint)) {
-  console.error('Smoke test failed: dist/main.js not found. Run build first.');
+function findEntrypointInDist(distPath) {
+  if (!fs.existsSync(distPath)) {
+    return null;
+  }
+
+  const preferredCandidates = [
+    path.join(distPath, 'main.js'),
+    path.join(distPath, 'src', 'main.js'),
+    path.join(distPath, 'apps', 'api', 'main.js'),
+  ];
+
+  for (const candidate of preferredCandidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  const stack = [distPath];
+  while (stack.length > 0) {
+    const currentDir = stack.pop();
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const entryPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(entryPath);
+      } else if (entry.isFile() && entry.name === 'main.js') {
+        return entryPath;
+      }
+    }
+  }
+
+  return null;
+}
+
+const entrypoint = findEntrypointInDist(path.join(appRoot, 'dist'));
+
+if (!entrypoint) {
+  console.error('Smoke test failed: compiled entrypoint not found under dist/. Run build first.');
   process.exit(1);
 }
 
