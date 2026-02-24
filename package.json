@@ -12,7 +12,7 @@
     "typecheck": "pnpm -r typecheck",
     "qa": "pnpm -r typecheck && pnpm -r build",
     "qa:lint": "pnpm -r lint",
-    "qa:smoke": "pnpm --filter @misviajes/api smoke:auth",
+    "qa:smoke": "pnpm --filter @misviajes/api build && pnpm --filter @misviajes/api smoke:auth",
     "qa:quick": "pnpm -r build",
     "db:up": "docker compose up -d db",
     "db:down": "docker compose down",
