@@ -60,6 +60,9 @@ jobs:
       - name: Prisma generate
         run: pnpm exec prisma generate --schema database/schema.prisma
 
+      - name: Prisma db push
+        run: pnpm db:push
+
       - name: Run QA
         run: pnpm qa
 
