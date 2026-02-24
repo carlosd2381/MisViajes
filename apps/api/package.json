@@ -6,7 +6,7 @@
     "prisma:sync-dist": "mkdir -p dist/generated && rm -rf dist/generated/prisma && cp -R src/generated/prisma dist/generated/prisma",
     "prestart:dev": "pnpm run prisma:sync-dist",
     "start:dev": "nest start --watch",
-    "build": "nest build",
+    "build": "rm -rf dist tsconfig.tsbuildinfo && nest build && pnpm run prisma:sync-dist",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "prestart": "pnpm run prisma:sync-dist",
     "start": "node dist/main",
