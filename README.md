@@ -59,3 +59,4 @@ Seguridad API (MVP):
 
 ## Despliegue
 - Guía operativa: `docs/deployment-runbook.md`
+- Protección de rama (GitHub): `docs/branch-protection.md`
