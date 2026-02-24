@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: misviajes_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: misviajes_crm
+    ports:
+      - '5432:5432'
+    volumes:
+      - misviajes_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U user -d misviajes_crm']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  misviajes_pgdata:

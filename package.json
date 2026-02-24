@@ -1,0 +1,34 @@
+{
+  "name": "misviajes-crm",
+  "private": true,
+  "version": "0.1.0",
+  "description": "CRM modular para agencia de viajes en México",
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @misviajes/web dev",
+    "dev:api": "pnpm --filter @misviajes/api start:dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "qa": "pnpm -r typecheck && pnpm -r build",
+    "qa:lint": "pnpm -r lint",
+    "qa:smoke": "pnpm --filter @misviajes/api smoke:auth",
+    "qa:quick": "pnpm -r build",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f db",
+    "db:push": "pnpm exec prisma db push --schema database/schema.prisma",
+    "db:seed": "node database/seed.cjs",
+    "db:seed:small": "SEED_CLIENTS=12 SEED_TRIPS=18 SEED_LEADS=15 SEED_OPPORTUNITIES=12 SEED_TASKS=20 SEED_PAYMENTS=16 SEED_INVOICES=14 SEED_COMMUNICATIONS=18 SEED_DOCUMENTS=15 node database/seed.cjs",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format"
+  },
+  "dependencies": {
+    "@prisma/client": "6.16.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "dotenv": "^17.3.1",
+    "prisma": "6.16.2"
+  }
+}

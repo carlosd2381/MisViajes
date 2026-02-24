@@ -1,0 +1,9 @@
+export enum OpportunityStage {
+  NEW = 'NEW',
+  QUOTING = 'QUOTING',
+  NEGOTIATING = 'NEGOTIATING',
+  BOOKED = 'BOOKED',
+  TRAVELING = 'TRAVELING',
+  POST_TRIP = 'POST_TRIP',
+  LOST = 'LOST',
+}

@@ -1,0 +1,143 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: #f6f7fb;
+  color: #1f2937;
+}
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.app-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.app-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.locale-switch {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.05;
+}
+
+.page-subtitle {
+  margin: 8px 0 18px;
+  color: #374151;
+  font-size: 18px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.text-tight {
+  margin: 4px 0;
+}
+
+.text-muted {
+  color: #4b5563;
+}
+
+.grid-responsive {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.grid-mobile-cards {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.grid-reports {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.section-gap {
+  margin-top: 12px;
+}
+
+.list-compact {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.list-item {
+  margin-bottom: 8px;
+}
+
+.quick-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.input-control {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  border: 0;
+  border-radius: 10px;
+  background: #1d4ed8;
+  color: #fff;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+}

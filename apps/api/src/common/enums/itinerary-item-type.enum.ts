@@ -1,0 +1,10 @@
+export enum ItineraryItemType {
+  FLIGHT = 'FLIGHT',
+  HOTEL = 'HOTEL',
+  TRANSFER = 'TRANSFER',
+  ACTIVITY = 'ACTIVITY',
+  CAR_RENTAL = 'CAR_RENTAL',
+  INSURANCE = 'INSURANCE',
+  RESTAURANT = 'RESTAURANT',
+  NOTE = 'NOTE',
+}
